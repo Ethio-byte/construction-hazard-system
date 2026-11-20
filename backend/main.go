@@ -7,9 +7,15 @@ import (
 	"construction-hazard-system/routes"
 
 	"github.com/gin-gonic/gin"
+	"github.com/joho/godotenv"
 )
 
 func main() {
+	// Load environment variables from .env.
+	if err := godotenv.Load(); err != nil {
+		log.Fatal("Error loading .env file: ", err)
+	}
+
 	// Connect to PostgreSQL.
 	db, err := database.Connect()
 	if err != nil {
